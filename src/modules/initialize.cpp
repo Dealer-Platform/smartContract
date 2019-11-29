@@ -18,10 +18,10 @@ ACTION reporting::init() {
 	}
 
 	
-	insertitem("peter"_n, "7c4975cc7c57023b9911c84274be358fd17e92f7598f8a524da5557359dbee80", 12, "a very nice incident over here", "incident1", true, true);
-	insertitem("emma"_n, "7c4975cc7c57aa3b9911c84274be358fd17e9bbb598f8a524da5557359dbee80", 14, "another incident", "incident2", true, true);
+	//insertitem("peter"_n, "7c4975cc7c57023b9911c84274be358fd17e92f7598f8a524da5557359dbee80", 12, "a very nice incident over here", "incident1", true, true);
+	//insertitem("emma"_n, "7c4975cc7c57aa3b9911c84274be358fd17e9bbb598f8a524da5557359dbee80", 14, "another incident", "incident2", true, true);
 
-	_orders.emplace(_self, [&]( auto& row ) { 
+	/*_orders.emplace(_self, [&]( auto& row ) { 
 	  row.key = _orders.available_primary_key();  
 	  row.itemKey = 1;
 	  row.seller = "peter"_n;
@@ -29,7 +29,7 @@ ACTION reporting::init() {
 	  row.finished = 0; 
 	  row.timestamp = eosio::current_time_point(); 	
 	});
-
+*/
 }
 
 void reporting::insertitem(name reporter, string hash, int price, string description, string title, bool sale, bool report){
