@@ -26,12 +26,12 @@ ACTION reporting::warning(name sender, string content){
 		require_auth( sender );
 
 
-    int pk =  _warning.available_primary_key();
-    _warning.emplace(_self, [&]( auto& row ) { 
+    int pk =  _notices.available_primary_key();
+    _notices.emplace(_self, [&]( auto& row ) { 
 			row.key = pk;
 		  row.sender = sender;
       row.content = content;
-       row.timestamp = eosio::current_time_point(); 	
+      row.timestamp = eosio::current_time_point(); 	
 		});
 
 }

@@ -19,7 +19,7 @@ CONTRACT reporting : public contract {
       _voteassign(receiver, receiver.value),
       _orders(receiver, receiver.value),
       _users(receiver, receiver.value),
-      _warning(receiver, receiver.value)
+      _notices(receiver, receiver.value)
       {}
   
  
@@ -131,15 +131,15 @@ CONTRACT reporting : public contract {
     typedef multi_index<"order"_n, order> order_t;
     order_t _orders;
 
-    TABLE _warning {
+    TABLE notice {
       uint64_t      key;
       name          sender;
       string        content;
       time_point    timestamp;
       uint64_t      primary_key() const { return key; }
     };
-    typedef multi_index<"warning"_n, _warning> warning_t;
-    warning_t _warning;
+    typedef multi_index<"notice"_n, notice> notice_t;
+    notice_t _notices; 
 
       TABLE seed {
       uint64_t  key = 1;
