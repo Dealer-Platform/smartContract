@@ -11,12 +11,10 @@ ACTION reporting::init() {
 	if(usercount == 0){
 	reguser("peter"_n, "",true);
     reguser("emma"_n, "",true);
+    reguser("isabelle"_n, "",true);
     reguser("validator1"_n, "",true);
     reguser("validator2"_n, "",true);
-    //reguser("validator3"_n, "",true);
-    //reguser("validator4"_n, "",true);
-    //reguser("tester"_n, "",false);
-    reguser("bzz"_n, "", true);
+	reguser("validator3"_n, "",true);
 	}
 
 	
