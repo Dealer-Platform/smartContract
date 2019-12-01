@@ -203,11 +203,6 @@
             ]
         },
         {
-            "name": "test",
-            "base": "",
-            "fields": []
-        },
-        {
             "name": "transfer",
             "base": "",
             "fields": [
@@ -221,38 +216,6 @@
                 },
                 {
                     "name": "amount",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "updatepk",
-            "base": "",
-            "fields": [
-                {
-                    "name": "user",
-                    "type": "name"
-                },
-                {
-                    "name": "publicKey",
-                    "type": "string"
-                }
-            ]
-        },
-        {
-            "name": "updateprice",
-            "base": "",
-            "fields": [
-                {
-                    "name": "reporter",
-                    "type": "name"
-                },
-                {
-                    "name": "itemKey",
-                    "type": "uint64"
-                },
-                {
-                    "name": "price",
                     "type": "uint64"
                 }
             ]
@@ -387,23 +350,8 @@
             "ricardian_contract": ""
         },
         {
-            "name": "test",
-            "type": "test",
-            "ricardian_contract": ""
-        },
-        {
             "name": "transfer",
             "type": "transfer",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "updatepk",
-            "type": "updatepk",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "updateprice",
-            "type": "updateprice",
             "ricardian_contract": ""
         },
         {

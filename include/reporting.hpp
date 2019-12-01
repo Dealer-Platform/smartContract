@@ -24,14 +24,11 @@ CONTRACT reporting : public contract {
   
  
     ACTION init();
-    ACTION updatepk(name user, string publicKey);
     ACTION report(name reporter, string hash, uint64_t price, uint64_t reward, string title, string description, bool report, bool sale);
-    ACTION updateprice(name reporter, uint64_t itemKey, uint64_t price);
     ACTION verify(uint64_t itemKey, name voter, bool accept, uint64_t rating);
     ACTION placeorder( name buyer, uint64_t itemKey );
     ACTION transfer(name from, name to, uint64_t amount);
     ACTION warning(name sender, string content);
-    ACTION test();
 
   private:
   
@@ -157,4 +154,4 @@ CONTRACT reporting : public contract {
 };
 
 //every ACTION has to be mentioned here to be called from outside of the smart contract
-EOSIO_DISPATCH(reporting, (init)(updatepk) (report)(updateprice)(test)(verify)(placeorder)(warning))
+EOSIO_DISPATCH(reporting, (init) (report)(verify)(placeorder)(warning))

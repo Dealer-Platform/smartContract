@@ -9,12 +9,6 @@
 
 #include <eosio/system.hpp>
 
-ACTION reporting::test() {
-
-warning("bzz"_n, "neuere dinge und so hier");
-  
-
-}
 
 
 
