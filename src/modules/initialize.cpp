@@ -30,7 +30,9 @@ void reporting::insertitem(name reporter, string hash, int price, string descrip
 			row.report = report;
 		});
 
-	assignverifier(pk);
+	int reward = price * rewardpercent / 100;
+
+	assignverifier(pk, reward);
 }
 
 

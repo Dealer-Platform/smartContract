@@ -33,9 +33,10 @@ ACTION reporting::verify(uint64_t itemKey, name voter, bool accept, uint64_t rat
 
 
 
-void reporting::assignverifier(uint64_t itemKey) {    
+void reporting::assignverifier(uint64_t itemKey, uint64_t reward) {    
 
 auto item = _items.find(itemKey);
+
 vector<eosio::name> voters =  choosverifier(3, item->reporter);
 
   for(auto& voter : voters) {
@@ -45,6 +46,12 @@ vector<eosio::name> voters =  choosverifier(3, item->reporter);
       row.voter = voter;
 	  row.done = false;
   });
+
+	//set escrow for verifier
+	_users.modify(_users.find(voter.value), _self, [&]( auto& row ) { 
+		row.escrow = row.escrow + reward; 
+	});
+
 }
 }
 

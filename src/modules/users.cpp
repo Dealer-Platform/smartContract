@@ -1,4 +1,4 @@
-void reporting::reguser(name user, string publicKey, bool validator) {
+ACTION reporting::reguser(name user, string publicKey, bool validator) {
 		require_auth( _self );
 	//	check ( !(initialized), "Initialization already done.");
 		user_t users( _self, _self.value );
@@ -11,9 +11,6 @@ void reporting::reguser(name user, string publicKey, bool validator) {
 		users.emplace(_self, [&]( auto& row ) {
 		  row.user = user;
 		  row.balance = 100;
-		  row.statusR = 7;
-		  row.statusV = 0;
-		  row.blames = 0;
 		  row.verifier = validator;
 		  row.frozen = 0;
       row.publicKey =	publicKey;

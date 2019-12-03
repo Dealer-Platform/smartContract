@@ -67,6 +67,10 @@
                     "type": "uint64"
                 },
                 {
+                    "name": "reward",
+                    "type": "uint64"
+                },
+                {
                     "name": "title",
                     "type": "string"
                 },
@@ -151,6 +155,24 @@
             ]
         },
         {
+            "name": "reguser",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "publicKey",
+                    "type": "string"
+                },
+                {
+                    "name": "validator",
+                    "type": "bool"
+                }
+            ]
+        },
+        {
             "name": "report",
             "base": "",
             "fields": [
@@ -164,10 +186,6 @@
                 },
                 {
                     "name": "price",
-                    "type": "uint64"
-                },
-                {
-                    "name": "reward",
                     "type": "uint64"
                 },
                 {
@@ -233,15 +251,7 @@
                     "type": "uint64"
                 },
                 {
-                    "name": "statusR",
-                    "type": "uint64"
-                },
-                {
-                    "name": "statusV",
-                    "type": "uint64"
-                },
-                {
-                    "name": "blames",
+                    "name": "escrow",
                     "type": "uint64"
                 },
                 {
@@ -342,6 +352,11 @@
         {
             "name": "placeorder",
             "type": "placeorder",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "reguser",
+            "type": "reguser",
             "ricardian_contract": ""
         },
         {

@@ -24,18 +24,19 @@ CONTRACT reporting : public contract {
   
  
     ACTION init();
-    ACTION report(name reporter, string hash, uint64_t price, uint64_t reward, string title, string description, bool report, bool sale);
+    ACTION report(name reporter, string hash, uint64_t price, string title, string description, bool report, bool sale);
     ACTION verify(uint64_t itemKey, name voter, bool accept, uint64_t rating);
     ACTION placeorder( name buyer, uint64_t itemKey );
     ACTION transfer(name from, name to, uint64_t amount);
     ACTION warning(name sender, string content);
+    ACTION reguser(name user, string publicKey, bool validator);
 
   private:
   
     //private Methods which are only called internal by the smart contract
-    void reguser(name user, string publicKey, bool validator);
+
     void blameintern(name blamer, name blamed, string reason, bool freeze);
-    void assignverifier(uint64_t itemKey);
+    void assignverifier(uint64_t itemKey, uint64_t reward);
     void insertitem(name reporter, string hash, int price, string description, string title, bool sale, bool report);
     void writelog(string logmsg);
     bool usersavail();
@@ -46,25 +47,24 @@ CONTRACT reporting : public contract {
 
       //a boolean for the init() method
       bool initialized = false;
+      int rewardpercent = 10;
       
       //parameters: These parameters can be altered (or should be considered to) by anyone who deploys this smart contract
-      uint64_t statusThreshold = 10;
+    //  uint64_t statusThreshold = 10;
     
-      uint64_t applicationThreshold = 5;
-      uint64_t voteThreshold = 3;
-      uint64_t minConfirmations = 2;
+     // uint64_t applicationThreshold = 5;
+     // uint64_t voteThreshold = 3;
+    //  uint64_t minConfirmations = 2;
       
-      uint64_t blameThreshold = 1;
-      uint64_t voteThresholdBlame = 5;
-      uint64_t minConfirmationsBlame = 2;
+    //  uint64_t blameThreshold = 1;
+    //  uint64_t voteThresholdBlame = 5;
+    //  uint64_t minConfirmationsBlame = 2;
       
       //tables: These lines describe the tables/datamodel of the smart contract. This is where the smart contract persists its data.
     TABLE user {
-        name              user;
+        name              user; 
         uint64_t          balance;
-        uint64_t          statusR;
-        uint64_t          statusV;
-        uint64_t          blames;
+        uint64_t          escrow;
         bool              verifier;
         bool              frozen;
         string            publicKey;
@@ -82,6 +82,7 @@ CONTRACT reporting : public contract {
         uint64_t          votes;
         uint64_t          rating;
         uint64_t          price;
+        uint64_t          reward;
         string            title;
         string            description;
         bool              sale;
@@ -154,4 +155,4 @@ CONTRACT reporting : public contract {
 };
 
 //every ACTION has to be mentioned here to be called from outside of the smart contract
-EOSIO_DISPATCH(reporting, (init) (report)(verify)(placeorder)(warning))
+EOSIO_DISPATCH(reporting, (init) (report)(verify)(placeorder)(warning)(reguser))
