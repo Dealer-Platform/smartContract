@@ -11,11 +11,10 @@ ACTION reporting::report(name reporter, string hash, uint64_t price, string titl
 	check( !(it_reporter == users.end()), "No such user on the blockchain.");
 	check( !(it_reporter->frozen), "This user is frozen.");
 	
-
 	uint64_t reward = price * rewardpercent / 100;
 
 	users.modify(it_reporter, _self, [&]( auto& row ) { 
-	  row.balance = row.balance - (reward * 3); 
+	  row.balance = row.balance - (reward * votercount); 
 	});
 
 	item_t item( _self, _self.value );
@@ -41,5 +40,6 @@ ACTION reporting::report(name reporter, string hash, uint64_t price, string titl
 	  row.sale = sale;
 	  row.report = report;
 	});
-		assignverifier(rowkey, reward);
+	assignverifier(rowkey, reward);
+	
 }

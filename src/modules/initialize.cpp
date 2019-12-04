@@ -8,10 +8,13 @@ ACTION reporting::init() {
 	reguser("peter"_n, "",true);
     reguser("emma"_n, "",true);
     reguser("isabelle"_n, "",true);
-    reguser("validator1"_n, "",true);
-    reguser("validator2"_n, "",true);
-	reguser("validator3"_n, "",true);
+    reguser("bob"_n, "",true);
+    reguser("mallory"_n, "",true);
+		reguser("carl"_n, "",true);
+	reguser("simon"_n, "",true);
 	}
+
+
 }
 
 void reporting::insertitem(name reporter, string hash, int price, string description, string title, bool sale, bool report){

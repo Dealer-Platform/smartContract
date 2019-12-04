@@ -1,3 +1,4 @@
+
 /**
 * generates random number
 * input: range of available numbers

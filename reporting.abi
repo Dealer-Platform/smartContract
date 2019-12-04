@@ -155,6 +155,16 @@
             ]
         },
         {
+            "name": "reassvoter",
+            "base": "",
+            "fields": [
+                {
+                    "name": "itemKey",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
             "name": "reguser",
             "base": "",
             "fields": [
@@ -352,6 +362,11 @@
         {
             "name": "placeorder",
             "type": "placeorder",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "reassvoter",
+            "type": "reassvoter",
             "ricardian_contract": ""
         },
         {

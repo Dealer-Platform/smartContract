@@ -32,7 +32,11 @@
         "chrono": "cpp",
         "deque": "cpp",
         "__memory": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "list": "cpp",
+        "initializer_list": "cpp",
+        "__split_buffer": "cpp",
+        "queue": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

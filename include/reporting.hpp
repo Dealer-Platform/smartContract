@@ -4,6 +4,7 @@
 #include <eosio/system.hpp>
 #include <eosio/print.hpp>
 
+
 //things are more readable with this namespace
 using namespace eosio;
 using namespace std;
@@ -29,36 +30,28 @@ CONTRACT reporting : public contract {
     ACTION placeorder( name buyer, uint64_t itemKey );
     ACTION transfer(name from, name to, uint64_t amount);
     ACTION warning(name sender, string content);
+    ACTION reassvoter(uint64_t itemKey);
     ACTION reguser(name user, string publicKey, bool validator);
-
   private:
   
     //private Methods which are only called internal by the smart contract
 
+    int random(const int range);
     void blameintern(name blamer, name blamed, string reason, bool freeze);
     void assignverifier(uint64_t itemKey, uint64_t reward);
     void insertitem(name reporter, string hash, int price, string description, string title, bool sale, bool report);
     void writelog(string logmsg);
     bool usersavail();
-
-
+    void payvoterescrow(uint64_t itemKey, uint64_t reward);
     vector<eosio::name> choosverifier(int count, name reporter);
 
 
       //a boolean for the init() method
       bool initialized = false;
       int rewardpercent = 10;
-      
+      int votercount = 3;
       //parameters: These parameters can be altered (or should be considered to) by anyone who deploys this smart contract
-    //  uint64_t statusThreshold = 10;
-    
-     // uint64_t applicationThreshold = 5;
-     // uint64_t voteThreshold = 3;
-    //  uint64_t minConfirmations = 2;
-      
-    //  uint64_t blameThreshold = 1;
-    //  uint64_t voteThresholdBlame = 5;
-    //  uint64_t minConfirmationsBlame = 2;
+
       
       //tables: These lines describe the tables/datamodel of the smart contract. This is where the smart contract persists its data.
     TABLE user {
@@ -139,20 +132,17 @@ CONTRACT reporting : public contract {
     typedef multi_index<"notice"_n, notice> notice_t;
     notice_t _notices; 
 
-      TABLE seed {
+    TABLE seed {
       uint64_t  key = 1;
       uint32_t  value = 1;
-      
-      auto primary_key() const {
-        return key;
-      }
+      uint64_t      primary_key() const { return key; }
     };
-    typedef multi_index <name("seed"), seed> seed_table;
-    seed_table _seed;
+    typedef multi_index <"seed"_n, seed> seed_t;
+    seed_t _seed;
 
-   int random(const int range);
+
 
 };
 
 //every ACTION has to be mentioned here to be called from outside of the smart contract
-EOSIO_DISPATCH(reporting, (init) (report)(verify)(placeorder)(warning)(reguser))
+EOSIO_DISPATCH(reporting, (init) (report)(verify)(placeorder)(warning)(reguser)(reassvoter))
