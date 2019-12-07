@@ -1,4 +1,3 @@
-
 ACTION reporting::placeorder( name buyer, uint64_t itemKey ) {
 	require_auth( buyer );
 	auto it_buyer = _users.find(buyer.value);

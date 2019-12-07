@@ -31,6 +31,7 @@ CONTRACT reporting : public contract {
     ACTION transfer(name from, name to, uint64_t amount);
     ACTION warning(name sender, string content);
     ACTION reassvoter(uint64_t itemKey);
+    ACTION keyupload(uint64_t orderno);
     ACTION reguser(name user, string publicKey, bool validator);
   private:
   
@@ -114,12 +115,14 @@ CONTRACT reporting : public contract {
 
     
     TABLE order {
-        uint64_t        key;
-        uint64_t        itemKey;
+        uint64_t      key;
+        uint64_t      itemKey;
         name          seller;
-        name                buyer;
+        name          buyer;
         bool          finished;
-        time_point            timestamp;
+        bool          bkeyupload;
+        bool          dispute;
+        time_point    timestamp;
         uint64_t      primary_key() const { return key; }
     };
     typedef multi_index<"order"_n, order> order_t;
@@ -148,4 +151,4 @@ CONTRACT reporting : public contract {
 };
 
 //every ACTION has to be mentioned here to be called from outside of the smart contract
-EOSIO_DISPATCH(reporting, (init) (report)(verify)(placeorder)(warning)(reguser)(reassvoter))
+EOSIO_DISPATCH(reporting, (init) (report)(verify)(placeorder)(warning)(reguser)(reassvoter)(keyupload))
