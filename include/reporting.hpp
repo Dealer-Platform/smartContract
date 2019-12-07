@@ -43,6 +43,9 @@ CONTRACT reporting : public contract {
     void writelog(string logmsg);
     bool usersavail();
     void payvoterescrow(uint64_t itemKey, uint64_t reward);
+    void addescrow(name user, uint64_t reward);
+    void payescrow(name user, uint64_t reward);
+    void transferescrow(name from, name to, uint64_t reward);
     vector<eosio::name> choosverifier(int count, name reporter);
 
 

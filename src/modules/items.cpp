@@ -1,6 +1,4 @@
 
-
-
 ACTION reporting::placeorder( name buyer, uint64_t itemKey ) {
 	require_auth( buyer );
 	auto it_buyer = _users.find(buyer.value);
@@ -26,8 +24,9 @@ ACTION reporting::placeorder( name buyer, uint64_t itemKey ) {
 	  row.finished = 0; 
 	  row.timestamp = eosio::current_time_point(); 	
 	});
+	
 	if(it_item->price > 0) {
-	  transfer(buyer, it_item->reporter, it_item->price);
+	  transferescrow(buyer, it_item->reporter, it_item->price);
 	}
 }
 

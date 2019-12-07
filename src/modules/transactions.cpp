@@ -15,3 +15,32 @@ ACTION reporting::transfer(name from, name to, uint64_t amount) {
 	_users.modify(it_from, _self, [&]( auto& row ) { row.balance = row.balance - amount; });
 	_users.modify(it_to, _self, [&]( auto& row ) { row.balance = row.balance + amount; });
 }
+
+	
+	void reporting::transferescrow(name from, name to, uint64_t reward){
+		auto it_from = _users.find(from.value); 
+		auto it_to = _users.find(to.value);
+	
+		check( it_from->balance - reward >= 0 , "Sender has not enough token.");
+
+		_users.modify(it_from, _self, [&]( auto& row ) { 
+			row.balance = row.balance - reward; 
+		});
+
+		_users.modify(it_to, _self, [&]( auto& row ) { 
+			row.escrow = row.escrow + reward; 
+		});
+	}
+
+    void reporting::addescrow(name user, uint64_t reward){
+		_users.modify(_users.find(user.value), _self, [&]( auto& row ) { 
+			row.escrow = row.escrow + reward; 
+		});
+	}
+
+    void reporting::payescrow(name user, uint64_t reward){
+		_users.modify(_users.find(user.value), _self, [&]( auto& row ) { 
+			row.escrow = row.escrow - reward;
+			row.balance = row.balance + reward; 
+		});
+	}
