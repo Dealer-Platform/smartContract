@@ -5,13 +5,14 @@ ACTION reporting::init() {
 	}
 
 	if(usercount == 0){
+	reguser("BSI"_n, "",false,"");
 	reguser("peter"_n, "",true, "QmYZ6jNzSSXnWDVC4RCYN4RtMEMn3KpqmWYMpqRe76saE4");
     reguser("emma"_n, "",true, "QmUPbh3gQxvRteAyWGqh3ZB3ow2FtetZagbprTxFeX7gxW");
     reguser("isabelle"_n, "",true, "QmYE8srF3n9t5cN62QL8MkC1W6mGDqmbYhB1cMhgYbVUE4");
     reguser("bob"_n, "",true,"");
     reguser("mallory"_n, "",true,"");
 	reguser("carl"_n, "",true,"");
-	reguser("simon"_n, "",true,"");
+
 	}
 
 
