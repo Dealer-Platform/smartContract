@@ -197,6 +197,10 @@
                 {
                     "name": "validator",
                     "type": "bool"
+                },
+                {
+                    "name": "ipns",
+                    "type": "string"
                 }
             ]
         },

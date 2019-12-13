@@ -32,7 +32,7 @@ CONTRACT reporting : public contract {
     ACTION warning(name sender, string content);
     ACTION reassvoter(uint64_t itemKey);
     ACTION keyupload(uint64_t orderno);
-    ACTION reguser(name user, string publicKey, bool validator);
+    ACTION reguser(name user, string publicKey, bool validator, string ipns);
   private:
   
     //private Methods which are only called internal by the smart contract
