@@ -3,7 +3,7 @@
 #include <eosio/time.hpp>
 #include <eosio/system.hpp>
 #include <eosio/print.hpp>
-
+#include <chrono>
 
 //things are more readable with this namespace
 using namespace eosio;
@@ -36,6 +36,8 @@ CONTRACT reporting : public contract {
     ACTION opendispute(name user, uint64_t orderno);
     ACTION closedispute(name user, uint64_t orderno);
     ACTION finishorder(name user, uint64_t orderno);
+    ACTION redeemorder(uint64_t orderno);
+    
     ACTION reguser(name user, string publicKey, bool validator, string ipns);
   private:
   
@@ -58,6 +60,8 @@ CONTRACT reporting : public contract {
       bool initialized = false;
       int rewardpercent = 10;
       int votercount = 3;
+      int redeemperioddays = 3;
+
       //parameters: These parameters can be altered (or should be considered to) by anyone who deploys this smart contract
 
       
@@ -156,4 +160,4 @@ CONTRACT reporting : public contract {
 };
 
 //every ACTION has to be mentioned here to be called from outside of the smart contract
-EOSIO_DISPATCH(reporting, (init) (report)(verify)(placeorder)(warning)(reguser)(reassvoter)(keyupload)(opendispute)(closedispute)(finishorder)(test))
+EOSIO_DISPATCH(reporting, (init) (report)(verify)(placeorder)(warning)(reguser)(reassvoter)(keyupload)(opendispute)(closedispute)(finishorder)(test)(redeemorder))
