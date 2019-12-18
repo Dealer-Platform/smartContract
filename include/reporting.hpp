@@ -24,6 +24,7 @@ CONTRACT reporting : public contract {
       {}
   
  
+    ACTION test();
     ACTION init();
     ACTION report(name reporter, string hash, uint64_t price, string title, string description, bool report, bool sale);
     ACTION verify(uint64_t itemKey, name voter, bool accept, uint64_t rating);
@@ -32,6 +33,9 @@ CONTRACT reporting : public contract {
     ACTION warning(name sender, string content);
     ACTION reassvoter(uint64_t itemKey);
     ACTION keyupload(uint64_t orderno);
+    ACTION opendispute(name user, uint64_t orderno);
+    ACTION closedispute(name user, uint64_t orderno);
+    ACTION finishorder(name user, uint64_t orderno);
     ACTION reguser(name user, string publicKey, bool validator, string ipns);
   private:
   
@@ -84,6 +88,7 @@ CONTRACT reporting : public contract {
         string            description;
         bool              sale;
         bool              report;
+        time_point        timestamp;
         uint64_t          primary_key() const { return key; }
       };
       typedef multi_index<"item"_n, item> item_t;
@@ -151,4 +156,4 @@ CONTRACT reporting : public contract {
 };
 
 //every ACTION has to be mentioned here to be called from outside of the smart contract
-EOSIO_DISPATCH(reporting, (init) (report)(verify)(placeorder)(warning)(reguser)(reassvoter)(keyupload))
+EOSIO_DISPATCH(reporting, (init) (report)(verify)(placeorder)(warning)(reguser)(reassvoter)(keyupload)(opendispute)(closedispute)(finishorder)(test))

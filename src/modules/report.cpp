@@ -39,6 +39,7 @@ ACTION reporting::report(name reporter, string hash, uint64_t price, string titl
 	  row.description = description;
 	  row.sale = sale;
 	  row.report = report;
+	  row.timestamp = eosio::current_time_point(); 	
 	});
 	assignverifier(rowkey, reward);
 	
