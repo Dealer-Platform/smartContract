@@ -85,6 +85,10 @@
                 {
                     "name": "report",
                     "type": "bool"
+                },
+                {
+                    "name": "timestamp",
+                    "type": "time_point"
                 }
             ]
         },

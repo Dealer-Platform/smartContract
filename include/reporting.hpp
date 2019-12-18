@@ -84,6 +84,7 @@ CONTRACT reporting : public contract {
         string            description;
         bool              sale;
         bool              report;
+        time_point        timestamp;
         uint64_t          primary_key() const { return key; }
       };
       typedef multi_index<"item"_n, item> item_t;
