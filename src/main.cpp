@@ -12,7 +12,13 @@
 
 
 
+ACTION reporting::test() {
 
+    auto order = _orders.find(1);
+
+    print("Order: ", order->seller);
+
+}
 
 
 
