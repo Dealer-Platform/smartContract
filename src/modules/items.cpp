@@ -10,6 +10,8 @@ ACTION reporting::placeorder( name buyer, uint64_t itemKey ) {
 	
 	//name seller = it_item->reporter;
 	//uint64_t price = ;
+
+	check(!(it_buyer->balance < it_item->price), "you have insufficient balance for this order");
 	
 	for(auto& row : _orders) { 
 	  check( !(row.itemKey == itemKey && row.buyer == buyer), "That order was already placed." ); 

@@ -13,8 +13,10 @@ ACTION reporting::report(name reporter, string hash, uint64_t price, string titl
 	
 	uint64_t reward = price * rewardpercent / 100;
 
-	users.modify(it_reporter, _self, [&]( auto& row ) { 
-			
+
+	check(!(it_reporter->balance < (reward * votercount)), "you have insufficient balance for this report");
+
+	users.modify(it_reporter, _self, [&]( auto& row ) { 	
 		if((row.balance - (reward * votercount)) >= 0){
 			row.balance = row.balance - (reward * votercount);
 		}else{
