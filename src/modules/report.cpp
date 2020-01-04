@@ -14,7 +14,12 @@ ACTION reporting::report(name reporter, string hash, uint64_t price, string titl
 	uint64_t reward = price * rewardpercent / 100;
 
 	users.modify(it_reporter, _self, [&]( auto& row ) { 
-	  row.balance = row.balance - (reward * votercount); 
+			
+		if((row.balance - (reward * votercount)) >= 0){
+			row.balance = row.balance - (reward * votercount);
+		}else{
+			row.balance = 0;
+		}
 	});
 
 	item_t item( _self, _self.value );
