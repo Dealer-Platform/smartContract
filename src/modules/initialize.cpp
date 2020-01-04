@@ -11,11 +11,42 @@ ACTION reporting::init() {
     reguser("isabelle"_n, "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEArB488qKqhnQUlufw8xde\nnJHIyn0hXKNnjAj8l5N9a9+vK2EH1aAGT2aRCEJz2JmaLoCy2C1YoXvWlktISHKB\nTwnHhOInExLbDaU/WG0CHTU6l2rYzsb8kVAXsxz/zxMvXJjS9jELvtQfmT87/pMD\n0D94m14y6/2zMYCOr5a5wJmNZc4JtQQSWgi++hpuKqfI\n1TPCJLEmFs/lGzW43NFi\n0TpebY56uIpuGUikJ1gc1nX2uiFJG1dCA5mbCglj/RBRyrrPWomZNEty050LxDOq\nAliDqrCEoR8lbFv5f+Q/EJsHZD7P7dyZhJkQxK56W7927OdFLDWMWplbXif5RRNE\nHie0gEY425hdxveqPhQ18gLofvAI25CfPQbVPj8U4XgCoSCu4l2f2M0Xts9Z8yf5\ngGvczhY3lnzllreM557xGnXFwrIKaNPSygJbUd0KqN14kP/ySqES2C\nLacqRSSZSk\nRkvVPcqJ7V+4Lwz12PXb37CH5m5OFG77tA9bG55nLkBSzvuiLaE+r0F4LMfo5GGN\nQmuIawcHdhf05C2ZzlLkMmmq+OmEKpKfrhmfPJEe9emjKpXgT79xyUMQS5giBZKp\nKJ4z24clje6SciwMZIEoY0y+vPYe1vzhICjZ3NDi+hAWgrF+L7TJf86gS6c6u2u2\nO+PPjZWCDNv2g15fSFWID7kCAwEAAQ==",true, "QmYE8srF3n9t5cN62QL8MkC1W6mGDqmbYhB1cMhgYbVUE4");
     reguser("bob"_n, "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEArB488qKqhnQUlufw8xde\nnJHIyn0hXKNnjAj8l5N9a9+vK2EH1aAGT2aRCEJz2JmaLoCy2C1YoXvWlktISHKB\nTwnHhOInExLbDaU/WG0CHTU6l2rYzsb8kVAXsxz/zxMvXJjS9jELvtQfmT87/pMD\n0D94m14y6/2zMYCOr5a5wJmNZc4JtQQSWgi++hpuKqfI\n1TPCJLEmFs/lGzW43NFi\n0TpebY56uIpuGUikJ1gc1nX2uiFJG1dCA5mbCglj/RBRyrrPWomZNEty050LxDOq\nAliDqrCEoR8lbFv5f+Q/EJsHZD7P7dyZhJkQxK56W7927OdFLDWMWplbXif5RRNE\nHie0gEY425hdxveqPhQ18gLofvAI25CfPQbVPj8U4XgCoSCu4l2f2M0Xts9Z8yf5\ngGvczhY3lnzllreM557xGnXFwrIKaNPSygJbUd0KqN14kP/ySqES2C\nLacqRSSZSk\nRkvVPcqJ7V+4Lwz12PXb37CH5m5OFG77tA9bG55nLkBSzvuiLaE+r0F4LMfo5GGN\nQmuIawcHdhf05C2ZzlLkMmmq+OmEKpKfrhmfPJEe9emjKpXgT79xyUMQS5giBZKp\nKJ4z24clje6SciwMZIEoY0y+vPYe1vzhICjZ3NDi+hAWgrF+L7TJf86gS6c6u2u2\nO+PPjZWCDNv2g15fSFWID7kCAwEAAQ==",true,"QmSiogXzJpGenLurt3ofh33SBfPxc4sgwjoTteaTrVeGEs");
 	reguser("simon"_n, "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA25CA8aDWxPhNHCoKFXvG\n97kljaDR/weEYVFdEiFlEgz8plEgcEoz73yRKa3ZbAu1dzVeh1YXBZAmG6vxrv+S\n6elSUUbCrUGEAhzV+099xTKqy+hRV0PpC+nG6lImRMlRqSwdKBqWIIoyDmGx80B3\nutZ9/xVIRDziImI1zhCApaWxNVzkB73xeBR8VNRk8cAG\nuE5wlYHL4uk21w9JtylA\nh9jIMVDPflWhuWzieirzOR01VFbLQWO97NmgKkx5PxgyDXosRqc2llms5kqfMPfH\nKN0byCA52d0A1XB7wnrhmnn/t3fTT2Wo1ivYvj/TxD1o7q3VFQRNDWD+ah8lA/co\n0gJIqP+xs9fnE5oPeRNBqAfYBACE3AjjXBGyyD+tupyhqsA7xf+e1sPEtl1N2ZC4\nOjZW9kaRFIY+cVpo4apr8Ea6hTX1It7Ai2x29SIQvLkwCM+rDb7u2s\nIV2Q7002x0\nwV/JMfdrssi1y82ZTY7zPLm+kMMgfMY45GuFOPyLm4h6iNlKva0y5rkSieLwQwjc\ns5awzwL0+1sgveOW8mQmCPVEk6S3y39TUuVBZGHbcC6J4iYxZ5IFwrhGCh6+aBrE\nRdquwRQiHhTmsZMAH9Ab93j8t6/1d1MhbeVxYeO5uO5se5H/WkOtEnOomNHJnb+E\nDMp15vaMDmYxwT3aJCvnBEkCAwEAAQ==",true,"QmeybGaHdwrt2TyML57Gsm6dwktT5WpGFpns1G21LoXBZt");
+	
+	insertitem("peter"_n, "8867b0f58bab0b0bc37a8ddf50f7d822f91614c8950abbc79e2b458ebb936889", 25, "Threat Actor Leveraging Attack Patterns and Malware", "Threat Actor and Attack Pattern", true, true);
+	insertitem("peter"_n, "e43c66c297dc4d3f680dfdaaa6b9380a57d7f25cdd1eda740e19e460e723cab6", 16, "A malicious URL was seen on the network and an indicator was generated to capture this information.", "Sighting of an Indicator", true, true);
+	insertitem("emma"_n, "2db44de5b12085cfc9a7a7cb5f3090fbae62ae2c728e2113f30834dee5ca4744", 12, "This scenario consists of an indicator for an URL which is known to be malicious", "	Indicator for Malicious URL", true, true);
+	insertitem("emma"_n, "01f3d8da8677434c96398d4bfea0761f4dc4c791599035fb6b42ab6b7ebc0c2e", 12, "A Description of a simple indicator that represents a pattern for a file", "Malware Indicator for File Hash", true, true);
+	
+	reporting::warning("reporting"_n,"Emotet continues to be among the most costly and destructive malware affecting governments. Its worm-like features result in rapidly spreading network-wide infections");
+
+	insertorder("peter"_n, 3, true);
+	insertorder("emma"_n, 0, false);
+
 	}
 }
 
+void reporting::insertorder(name buyer, uint64_t itemKey, bool keyupload){
+	auto it_buyer = _users.find(buyer.value);
+	auto it_item = _items.find(itemKey);
+
+	_orders.emplace(_self, [&]( auto& row ) { 
+	  row.key = _orders.available_primary_key();  
+	  row.itemKey = itemKey;
+	  row.seller = it_item->reporter;
+	  row.buyer = buyer; 
+	  row.finished = 0; 
+	  row.bkeyupload = keyupload;
+	  row.timestamp = eosio::current_time_point(); 	
+	});
+	
+	if(it_item->price > 0) {
+	  transferescrow(buyer, it_item->reporter, it_item->price);
+	}
+
+}
+
 void reporting::insertitem(name reporter, string hash, int price, string description, string title, bool sale, bool report){
-	require_auth( _self );
+
 
 		int pk =  _items.available_primary_key();
 

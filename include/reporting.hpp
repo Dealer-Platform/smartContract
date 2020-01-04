@@ -29,7 +29,6 @@ CONTRACT reporting : public contract {
     ACTION report(name reporter, string hash, uint64_t price, string title, string description, bool report, bool sale);
     ACTION verify(uint64_t itemKey, name voter, bool accept, uint64_t rating);
     ACTION placeorder( name buyer, uint64_t itemKey );
-    ACTION transfer(name from, name to, uint64_t amount);
     ACTION warning(name sender, string content);
     ACTION reassvoter(uint64_t itemKey);
     ACTION keyupload(uint64_t orderno);
@@ -47,6 +46,7 @@ CONTRACT reporting : public contract {
     void blameintern(name blamer, name blamed, string reason, bool freeze);
     void assignverifier(uint64_t itemKey, uint64_t reward);
     void insertitem(name reporter, string hash, int price, string description, string title, bool sale, bool report);
+    void insertorder(name buyer, uint64_t itemKey, bool keyupload);
     void writelog(string logmsg);
     bool usersavail();
     void payvoterescrow(uint64_t itemKey, uint64_t reward);

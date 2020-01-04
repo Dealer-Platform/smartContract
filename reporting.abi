@@ -314,24 +314,6 @@
             "fields": []
         },
         {
-            "name": "transfer",
-            "base": "",
-            "fields": [
-                {
-                    "name": "from",
-                    "type": "name"
-                },
-                {
-                    "name": "to",
-                    "type": "name"
-                },
-                {
-                    "name": "amount",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
             "name": "user",
             "base": "",
             "fields": [
@@ -490,11 +472,6 @@
         {
             "name": "test",
             "type": "test",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "transfer",
-            "type": "transfer",
             "ricardian_contract": ""
         },
         {
