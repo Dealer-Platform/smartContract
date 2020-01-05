@@ -60,7 +60,7 @@ CONTRACT reporting : public contract {
       bool initialized = false;
       int rewardpercent = 10;
       int votercount = 3;
-      int redeemperioddays = 3;
+      int redeemperioddays = 7;
 
       //parameters: These parameters can be altered (or should be considered to) by anyone who deploys this smart contract
 
