@@ -16,7 +16,11 @@ ACTION reporting::init() {
 	insertitem("peter"_n, "e43c66c297dc4d3f680dfdaaa6b9380a57d7f25cdd1eda740e19e460e723cab6", 16, "A malicious URL was seen on the network and an indicator was generated to capture this information.", "Sighting of an Indicator", true, true);
 	insertitem("emma"_n, "2db44de5b12085cfc9a7a7cb5f3090fbae62ae2c728e2113f30834dee5ca4744", 12, "This scenario consists of an indicator for an URL which is known to be malicious", "	Indicator for Malicious URL", true, true);
 	insertitem("emma"_n, "01f3d8da8677434c96398d4bfea0761f4dc4c791599035fb6b42ab6b7ebc0c2e", 12, "A Description of a simple indicator that represents a pattern for a file", "Malware Indicator for File Hash", true, true);
-	
+	insertitem("peter"_n, "5b5d716bbd9abd3d10ee0938cd0a104e37b8cec69e97e597f246fb4a08a0a8c3", 14, "Yet another attack pattern", "Latest Attack Pattern", true, true);
+	insertitem("emma"_n, "05bad41c57932c044a7002a9338e3b34b05009907e3f171f89b4fcb2b9e3c887", 17, "Recognized intrusion set", "Intrusion set", true, true);
+
+
+
 	reporting::warning("reporting"_n,"Emotet continues to be among the most costly and destructive malware affecting governments. Its worm-like features result in rapidly spreading network-wide infections");
 
 	insertorder("peter"_n, 3, true);
