@@ -11,6 +11,13 @@ ACTION reporting::report(name reporter, string hash, uint64_t price, string titl
 	check( !(it_reporter == users.end()), "No such user on the blockchain.");
 	check( !(it_reporter->frozen), "This user is frozen.");
 	
+
+	item_t item( _self, _self.value );
+	for(auto& row : item) { 
+	  check( !(row.hash == hash), "That item was already uploaded." ); 
+	}
+
+
 	uint64_t reward = price * rewardpercent / 100;
 
 
@@ -24,10 +31,7 @@ ACTION reporting::report(name reporter, string hash, uint64_t price, string titl
 		}
 	});
 
-	item_t item( _self, _self.value );
-	for(auto& row : item) { 
-	  check( !(row.hash == hash), "That item was already uploaded." ); 
-	}
+
 
 	uint64_t rowkey = 	item.available_primary_key(); 
 
