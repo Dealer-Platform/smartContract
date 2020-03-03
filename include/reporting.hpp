@@ -27,7 +27,7 @@ CONTRACT reporting : public contract {
     ACTION test();
     ACTION init();
     ACTION report(name reporter, string hash, uint64_t price, string title, string description, bool report, bool sale);
-    ACTION verify(uint64_t itemKey, name voter, bool accept, uint64_t rating);
+    ACTION verify(uint64_t itemKey, name voter, bool accept, float rating);
     ACTION placeorder( name buyer, uint64_t itemKey );
     ACTION warning(name sender, string content);
     ACTION reassvoter(uint64_t itemKey);
@@ -106,7 +106,7 @@ CONTRACT reporting : public contract {
         name                  voter;
         bool                  done;
         bool                  approved;
-        uint64_t              rating;
+        float                 rating;
         time_point            timestamp;
         uint64_t          primary_key() const { return key; }
       };

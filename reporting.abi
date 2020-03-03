@@ -309,6 +309,16 @@
             ]
         },
         {
+            "name": "sellredeem",
+            "base": "",
+            "fields": [
+                {
+                    "name": "orderno",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
             "name": "test",
             "base": "",
             "fields": []
@@ -365,7 +375,7 @@
                 },
                 {
                     "name": "rating",
-                    "type": "uint64"
+                    "type": "float32"
                 }
             ]
         },
@@ -395,7 +405,7 @@
                 },
                 {
                     "name": "rating",
-                    "type": "uint64"
+                    "type": "float32"
                 },
                 {
                     "name": "timestamp",
@@ -467,6 +477,11 @@
         {
             "name": "report",
             "type": "report",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "sellredeem",
+            "type": "sellredeem",
             "ricardian_contract": ""
         },
         {
