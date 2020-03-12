@@ -324,6 +324,16 @@
             "fields": []
         },
         {
+            "name": "updateuser",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                }
+            ]
+        },
+        {
             "name": "user",
             "base": "",
             "fields": [
@@ -354,6 +364,10 @@
                 {
                     "name": "ipns",
                     "type": "string"
+                },
+                {
+                    "name": "last_active",
+                    "type": "time_point"
                 }
             ]
         },
@@ -487,6 +501,11 @@
         {
             "name": "test",
             "type": "test",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "updateuser",
+            "type": "updateuser",
             "ricardian_contract": ""
         },
         {
