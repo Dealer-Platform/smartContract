@@ -82,7 +82,7 @@ vector<eosio::name> voters =  choosverifier(votercount, item->reporter);
 
 ACTION reporting::reassvoter(uint64_t itemKey){
 	//only contract owner
-	require_auth( _self );
+//	require_auth( _self );
 
 
 	auto item = _items.find(itemKey);
