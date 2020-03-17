@@ -26,6 +26,7 @@ CONTRACT reporting : public contract {
  
     ACTION test();
     ACTION init();
+    ACTION clearall();
     ACTION report(name reporter, string hash, uint64_t price, string title, string description, bool report, bool sale);
     ACTION verify(uint64_t itemKey, name voter, bool accept, uint64_t rating);
     ACTION placeorder( name buyer, uint64_t itemKey );
@@ -162,4 +163,4 @@ CONTRACT reporting : public contract {
 };
 
 //every ACTION has to be mentioned here to be called from outside of the smart contract
-EOSIO_DISPATCH(reporting, (init) (report)(verify)(placeorder)(warning)(reguser)(reassvoter)(keyupload)(opendispute)(closedispute)(finishorder)(test)(redeemorder)(sellredeem))
+EOSIO_DISPATCH(reporting, (init)(clearall)(report)(verify)(placeorder)(warning)(reguser)(reassvoter)(keyupload)(opendispute)(closedispute)(finishorder)(test)(redeemorder)(sellredeem))

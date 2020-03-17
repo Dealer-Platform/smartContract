@@ -11,7 +11,7 @@
   "deploy": {
     "target": "both",
     "mainnet": "",
-    "kylin": "",
+    "kylin": "sigmatics123",
     "jungle": "",
     "local": "reporting"
   },
