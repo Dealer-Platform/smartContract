@@ -1,6 +1,6 @@
 
 
-ACTION reporting::verify(uint64_t itemKey, name voter, bool accept, uint64_t rating){
+ACTION reporting::verify(uint64_t itemKey, name voter, bool accept, float rating){
 	require_auth(voter);
 
 	// find row in voteassign table

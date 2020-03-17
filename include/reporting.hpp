@@ -28,7 +28,7 @@ CONTRACT reporting : public contract {
     ACTION init();
     ACTION clearall();
     ACTION report(name reporter, string hash, uint64_t price, string title, string description, bool report, bool sale);
-    ACTION verify(uint64_t itemKey, name voter, bool accept, uint64_t rating);
+    ACTION verify(uint64_t itemKey, name voter, bool accept, float rating);
     ACTION placeorder( name buyer, uint64_t itemKey );
     ACTION warning(name sender, string content);
     ACTION reassvoter(uint64_t itemKey);
@@ -38,9 +38,9 @@ CONTRACT reporting : public contract {
     ACTION finishorder(name user, uint64_t orderno);
     ACTION redeemorder(uint64_t orderno);
     ACTION sellredeem(uint64_t orderno);
-
-
+    ACTION updateuser(name user);
     ACTION reguser(name user, string publicKey, bool validator, string ipns);
+    
   private:
   
     //private Methods which are only called internal by the smart contract
@@ -77,6 +77,7 @@ CONTRACT reporting : public contract {
         bool              frozen;
         string            publicKey;
         string            ipns;
+        time_point        last_active;
         uint64_t          primary_key() const { return user.value; }
     };
     typedef multi_index<"users"_n, user> user_t;
@@ -107,7 +108,7 @@ CONTRACT reporting : public contract {
         name                  voter;
         bool                  done;
         bool                  approved;
-        uint64_t              rating;
+        float                 rating;
         time_point            timestamp;
         uint64_t          primary_key() const { return key; }
       };
@@ -163,4 +164,4 @@ CONTRACT reporting : public contract {
 };
 
 //every ACTION has to be mentioned here to be called from outside of the smart contract
-EOSIO_DISPATCH(reporting, (init)(clearall)(report)(verify)(placeorder)(warning)(reguser)(reassvoter)(keyupload)(opendispute)(closedispute)(finishorder)(test)(redeemorder)(sellredeem))
+EOSIO_DISPATCH(reporting, (init)(clearall)(report)(verify)(placeorder)(warning)(reguser)(reassvoter)(keyupload)(opendispute)(closedispute)(finishorder)(test)(redeemorder)(sellredeem)(updateuser))
