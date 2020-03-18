@@ -1,5 +1,5 @@
 ACTION reporting::reguser(name user, string publicKey, bool validator, string ipns) {
-	//	require_auth( _self );
+		require_auth( _self );
 	//	check ( !(initialized), "Initialization already done.");
 		user_t users( _self, _self.value );
 

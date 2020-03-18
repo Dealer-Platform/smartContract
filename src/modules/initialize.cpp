@@ -1,5 +1,5 @@
 ACTION reporting::clearall(){
-	//require_auth(_self);
+	require_auth(_self);
 	user_t users( _self, _self.value );
 	auto itr = users.begin();
 	while(itr != users.end()){
