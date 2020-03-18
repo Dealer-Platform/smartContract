@@ -46,7 +46,7 @@ ACTION reporting::init() {
 	//insertitem("peter"_n, "5b5d716bbd9abd3d10ee0938cd0a104e37b8cec69e97e597f246fb4a08a0a8c3", 14, "Yet another attack pattern", "Latest Attack Pattern", true, true);
 	//insertitem("emma"_n, "05bad41c57932c044a7002a9338e3b34b05009907e3f171f89b4fcb2b9e3c887", 17, "Recognized intrusion set", "Intrusion set", true, true);
 
-	reporting::warning("reporting"_n,"Emotet continues to be among the most costly and destructive malware affecting governments. Its worm-like features result in rapidly spreading network-wide infections");
+	//reporting::warning("reporting"_n,"Emotet continues to be among the most costly and destructive malware affecting governments. Its worm-like features result in rapidly spreading network-wide infections");
 
 	//insertorder("peter"_n, 3, true);
 	//insertorder("emma"_n, 0, false);
