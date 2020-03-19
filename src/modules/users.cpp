@@ -22,17 +22,3 @@ ACTION reporting::reguser(name user, string publicKey, bool validator, string ip
 	    row.ipns = ipns;
 		});
 }
-
-
-
-ACTION reporting::updateuser(name user){
-	require_auth(user);
-
-	user_t users( _self, _self.value );
-	auto it_reporter = users.find(user.value);
-
-	users.modify(it_reporter, _self, [&]( auto& row ) { 	
-		row.last_active = eosio::current_time_point();
-	});
-
-}

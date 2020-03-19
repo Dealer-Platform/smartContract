@@ -3,7 +3,7 @@
   "contract": "reporting",
   "include": "",
   "resource": "",
-  "cdt": "v1.6.3",
+  "cdt": "v1.7.0",
   "output": "",
   "scripts": {
     "build": "touch reporting.abi && rm reporting.abi && touch reporting.wasm && rm reporting.wasm && eosio-cpp -abigen -I include -R resource -contract reporting -o reporting.wasm src/main.cpp "

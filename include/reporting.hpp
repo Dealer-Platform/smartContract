@@ -38,7 +38,6 @@ CONTRACT reporting : public contract {
     ACTION finishorder(name user, uint64_t orderno);
     ACTION redeemorder(uint64_t orderno);
     ACTION sellredeem(uint64_t orderno);
-    ACTION updateuser(name user);
     ACTION reguser(name user, string publicKey, bool validator, string ipns);
     
   private:
@@ -164,4 +163,4 @@ CONTRACT reporting : public contract {
 };
 
 //every ACTION has to be mentioned here to be called from outside of the smart contract
-EOSIO_DISPATCH(reporting, (init)(clearall)(report)(verify)(placeorder)(warning)(reguser)(reassvoter)(keyupload)(opendispute)(closedispute)(finishorder)(test)(redeemorder)(sellredeem)(updateuser))
+EOSIO_DISPATCH(reporting, (init)(clearall)(report)(verify)(placeorder)(warning)(reguser)(reassvoter)(keyupload)(opendispute)(closedispute)(finishorder)(test)(redeemorder)(sellredeem))

@@ -12,7 +12,6 @@ ACTION reporting::verify(uint64_t itemKey, name voter, bool accept, float rating
 	}
 	check(key != -1, "voting not available" );
 
-
 	//change voteassign record
 	auto currVote = _voteassign.find(key);
 	_voteassign.modify(currVote, _self, [&]( auto& row ) { 
@@ -29,6 +28,13 @@ ACTION reporting::verify(uint64_t itemKey, name voter, bool accept, float rating
 		}
 		row.votes++;
 	});
+
+  user_t users( _self, _self.value );
+  auto it_reporter = users.find(voter.value);
+
+  users.modify(it_reporter, _self, [&]( auto& row ) {
+    row.last_active = eosio::current_time_point();
+  });
 
 	payvoterescrow(itemKey, item->reward);
 }
