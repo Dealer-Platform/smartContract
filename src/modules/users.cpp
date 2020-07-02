@@ -22,3 +22,11 @@ ACTION reporting::reguser(name user, string publicKey, bool validator, string ip
 	    row.ipns = ipns;
 		});
 }
+
+ACTION reporting::addbalance(name user, uint64_t balance){
+		require_auth( _self );
+
+        _users.modify(_users.find(user.value), _self, [&]( auto& row ) {
+            row.balance = row.balance + balance;
+        });
+}

@@ -39,6 +39,7 @@ CONTRACT reporting : public contract {
     ACTION redeemorder(uint64_t orderno);
     ACTION sellredeem(uint64_t orderno);
     ACTION reguser(name user, string publicKey, bool validator, string ipns);
+    ACTION addbalance(name user, uint64_t balance);
     
   private:
   
@@ -157,10 +158,8 @@ CONTRACT reporting : public contract {
     };
     typedef multi_index <"seed"_n, seed> seed_t;
     seed_t _seed;
-
-
-
 };
 
 //every ACTION has to be mentioned here to be called from outside of the smart contract
-EOSIO_DISPATCH(reporting, (init)(clearall)(report)(verify)(placeorder)(warning)(reguser)(reassvoter)(keyupload)(opendispute)(closedispute)(finishorder)(test)(redeemorder)(sellredeem))
+EOSIO_DISPATCH(reporting, (init)(clearall)(report)(verify)(placeorder)(warning)(reguser)(addbalance)(reassvoter)
+(keyupload)(opendispute)(closedispute)(finishorder)(test)(redeemorder)(sellredeem))
