@@ -52,7 +52,6 @@ CONTRACT reporting : public contract {
     void insertorder(name buyer, uint64_t itemKey, bool keyupload);
     void writelog(string logmsg);
     bool usersavail();
-    void payvoterescrow(uint64_t itemKey, uint64_t reward);
     void addescrow(name user, uint64_t reward);
     void payescrow(name user, uint64_t reward);
     void transferescrow(name from, name to, uint64_t reward);
@@ -111,21 +110,10 @@ CONTRACT reporting : public contract {
         float                 rating;
         time_point            timestamp;
         uint64_t          primary_key() const { return key; }
+        uint64_t          by_itemKey() const { return itemKey; }
       };
-      typedef multi_index<"voteassign"_n, voteassign> voteassign_t;
+      typedef multi_index<"voteassign"_n, voteassign, indexed_by<"itemkey"_n, const_mem_fun<voteassign, uint64_t, &voteassign::by_itemKey>>> voteassign_t;
       voteassign_t _voteassign;
-
-      TABLE application {
-        uint64_t              key;
-        uint64_t              itemKey;
-        name                    applicant;
-        bool              active;
-        time_point   timestamp;
-          uint64_t          primary_key() const { return key; }
-          uint64_t          by_itemKey() const { return itemKey; }
-      };
-      typedef multi_index<"application"_n, application, indexed_by<"itemkey"_n, const_mem_fun<application, uint64_t, &application::by_itemKey>>> application_t;    
-
     
     TABLE order {
         uint64_t      key;

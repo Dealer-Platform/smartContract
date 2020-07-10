@@ -4,17 +4,17 @@ ACTION reporting::verify(uint64_t itemKey, name voter, bool accept, float rating
 	require_auth(voter);
 
 	// find row in voteassign table
-	int key = -1;
-	for(auto& row : _voteassign) { 
-		if(row.itemKey == itemKey && row.voter == voter){
-			key = row.key;
-		}
+	auto _item_index = _voteassign.get_index<name("itemkey")>();
+	auto itr = _item_index.lower_bound(itemKey);
+	auto itr_end = _item_index.upper_bound(itemKey);
+	for (;itr != itr_end; itr++){
+	    if(itr->voter == voter)
+	        break;
 	}
-	check(key != -1, "voting not available" );
+	check(itr != _item_index.end(), "voting not available");
 
 	//change voteassign record
-	auto currVote = _voteassign.find(key);
-	_voteassign.modify(currVote, _self, [&]( auto& row ) { 
+	_item_index.modify(itr, _self, [&]( auto& row ) {
 		row.done = true;
 		row.timestamp = eosio::current_time_point();
 		row.rating = rating; 
@@ -32,36 +32,13 @@ ACTION reporting::verify(uint64_t itemKey, name voter, bool accept, float rating
   user_t users( _self, _self.value );
   auto it_reporter = users.find(voter.value);
 
+  //pay out escrow for voter
   users.modify(it_reporter, _self, [&]( auto& row ) {
     row.last_active = eosio::current_time_point();
+    row.escrow = row.escrow - item->reward;
+    row.balance = row.balance + item->reward;
   });
-
-	payvoterescrow(itemKey, item->reward);
 }
-//pays out escrow for voter if incident is fully voted
-void reporting::payvoterescrow(uint64_t itemKey, uint64_t reward){
-	
-	vector<eosio::name> verifier; 
-	for(auto& row : _voteassign) { 
-	  if(row.itemKey == itemKey){
-		  if(row.done == 1){
-			  verifier.push_back(row.voter);
-		  }
-	  }	  
-	}
-	
-		//fill escrow for all voters of this item
-	if(verifier.size() >= votercount){
-		 for(auto& v : verifier) {
-			_users.modify(_users.find(v.value), _self, [&]( auto& row ) { 
-				row.escrow = row.escrow - reward; 
-				row.balance = row.balance + reward;
-			});
-		}
-	}
-}
-
-
 
 void reporting::assignverifier(uint64_t itemKey, uint64_t reward) {    
 
@@ -137,9 +114,6 @@ ACTION reporting::reassvoter(uint64_t itemKey){
 	//trim candidates
 	replacecandidate.erase(replacecandidate.begin()+rnd);
 	}
-
-  
-print("test");
 
 }
 
