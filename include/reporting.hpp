@@ -126,8 +126,9 @@ CONTRACT reporting : public contract {
         bool          dispute;
         time_point    timestamp;
         uint64_t      primary_key() const { return key; }
+        uint64_t      by_itemKey() const { return itemKey; }
     };
-    typedef multi_index<"order"_n, order> order_t;
+    typedef multi_index<"order"_n, order, indexed_by<"itemkey"_n, const_mem_fun<order, uint64_t, &order::by_itemKey>>> order_t;
     order_t _orders;
 
     TABLE notice {
