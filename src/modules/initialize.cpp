@@ -65,7 +65,7 @@ void reporting::insertorder(name buyer, uint64_t itemKey, bool keyupload){
 
 }
 
-void reporting::insertitem(name reporter, string hash, int price, string description, string title, bool sale, bool report){
+void reporting::insertitem(name reporter, checksum256 hash, int price, string description, string title, bool sale, bool report){
 
 
 		int pk =  _items.available_primary_key();

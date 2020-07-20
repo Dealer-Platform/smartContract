@@ -27,7 +27,7 @@ CONTRACT reporting : public contract {
     ACTION test();
     ACTION init();
     ACTION clearall();
-    ACTION report(name reporter, string hash, uint64_t price, string title, string description, bool report, bool sale);
+    ACTION report(name reporter, checksum256 hash, uint64_t price, string title, string description, bool report, bool sale);
     ACTION verify(uint64_t itemKey, name voter, bool accept, float rating);
     ACTION placeorder( name buyer, uint64_t itemKey );
     ACTION warning(name sender, string content);
@@ -48,7 +48,7 @@ CONTRACT reporting : public contract {
     int random(const int range);
     void blameintern(name blamer, name blamed, string reason, bool freeze);
     void assignverifier(uint64_t itemKey, uint64_t reward);
-    void insertitem(name reporter, string hash, int price, string description, string title, bool sale, bool report);
+    void insertitem(name reporter, checksum256 hash, int price, string description, string title, bool sale, bool report);
     void insertorder(name buyer, uint64_t itemKey, bool keyupload);
     void writelog(string logmsg);
     bool usersavail();
@@ -85,7 +85,7 @@ CONTRACT reporting : public contract {
     TABLE item {
         uint64_t          key;
         name              reporter;
-        string            hash;
+        checksum256       hash;
         uint64_t          accepts;
         uint64_t          votes;
         uint64_t          rating;
@@ -97,8 +97,9 @@ CONTRACT reporting : public contract {
         bool              report;
         time_point        timestamp;
         uint64_t          primary_key() const { return key; }
+        checksum256       by_hash() const { return hash; }
       };
-      typedef multi_index<"item"_n, item> item_t;
+      typedef multi_index<"item"_n, item, indexed_by<"hash"_n, const_mem_fun<item, checksum256, &item::by_hash>>> item_t;
       item_t _items;
 
       TABLE voteassign {

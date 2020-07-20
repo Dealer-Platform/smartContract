@@ -4,26 +4,21 @@
  * With this method the user submits a hash of his threat intelligence data and some additional metadata.
  * If the reward is set the user has to pay it by this method. 
  */
-ACTION reporting::report(name reporter, string hash, uint64_t price, string title, string description, bool report, bool sale) {
+ACTION reporting::report(name reporter, checksum256 hash, uint64_t price, string title, string description, bool report, bool sale) {
 	require_auth( reporter );
-	user_t users( _self, _self.value );
-	auto it_reporter = users.find(reporter.value);
-	check( !(it_reporter == users.end()), "No such user on the blockchain.");
+	auto it_reporter = _users.find(reporter.value);
+	check( !(it_reporter == _users.end()), "No such user on the blockchain.");
 	check( !(it_reporter->frozen), "This user is frozen.");
-	
 
-	item_t item( _self, _self.value );
-	for(auto& row : item) { 
-	  check( !(row.hash == hash), "That item was already uploaded." ); 
-	}
-
+    auto _item_index = _items.get_index<name("hash")>();
+	auto itr = _item_index.find(hash);
+	check( itr == _item_index.end(), "That item was already uploaded." );
 
 	uint64_t reward = price * rewardpercent / 100;
 
-
 	check(!(it_reporter->balance < (reward * votercount)), "you have insufficient balance for this report");
 
-	users.modify(it_reporter, _self, [&]( auto& row ) { 	
+	_users.modify(it_reporter, _self, [&]( auto& row ) {
 		if((row.balance - (reward * votercount)) >= 0){
 			row.balance = row.balance - (reward * votercount);
 		}else{
@@ -31,14 +26,10 @@ ACTION reporting::report(name reporter, string hash, uint64_t price, string titl
 		}
 	});
 
+	uint64_t rowkey = 	_items.available_primary_key();
 
-
-	uint64_t rowkey = 	item.available_primary_key(); 
-
-
-//item.available_primary_key();
-	item.emplace(_self, [&]( auto& row ) { 
-	  row.key =  rowkey;
+	_items.emplace(_self, [&]( auto& row ) {
+	  row.key = rowkey;
 	  row.reporter = reporter; 
 	  row.hash = hash; 
 	  row.accepts = 0;

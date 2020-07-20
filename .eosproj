@@ -13,7 +13,7 @@
     "mainnet": "",
     "kylin": "eosdealeradm",
     "jungle": "",
-    "local": "reporting"
+    "local": "eosdealeradm"
   },
   "test": {
     "npmClient": "npm"
